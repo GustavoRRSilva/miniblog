@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import style from "@/styles/Register.module.css";
 import { useAuthentication } from "@/hooks/useAuthentication";
-
+import { useRouter } from "next/router";
+import { useAuthValue } from "@/context/AuthContext";
 export default function register() {
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +10,21 @@ export default function register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const { createUser, error: authError, loading } = useAuthentication();
+
+
+  //redirecionar caso o usuario esteja logado
+  const router = useRouter();
+  const { user } = useAuthValue();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
+
+
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     setError("");
 
