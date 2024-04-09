@@ -1,6 +1,6 @@
-
+import firebase from 'firebase/app';
 import { initializeApp } from "firebase/app";
-import {getFirestore} from 'firebase/firestore'
+import {getFirestore} from 'firebase/firestore' 
 const firebaseConfig = {
   apiKey: "AIzaSyBbvjGX-_UiPJEnANS3hOUMS6Idar0np-Y",
   authDomain: "miniblog-5148c.firebaseapp.com",
@@ -16,3 +16,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export {db}
+export {app};
