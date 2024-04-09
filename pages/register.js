@@ -11,20 +11,17 @@ export default function register() {
   const [error, setError] = useState("");
   const { createUser, error: authError, loading } = useAuthentication();
 
-
   //redirecionar caso o usuario esteja logado
   const router = useRouter();
   const { user } = useAuthValue();
 
   useEffect(() => {
     if (user) {
-      router.push('/');
+      router.push("/");
     }
   }, [user, router]);
 
-
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
     setError("");
 
@@ -45,7 +42,7 @@ export default function register() {
   };
   useEffect(() => {
     if (authError) {
-      setError(authError );
+      setError(authError);
     }
   }, [authError]);
   return (
@@ -98,7 +95,11 @@ export default function register() {
           />
         </label>
         {!loading && <button className={style.btn}>Cadastrar</button>}
-        {loading && <button disabled className={style.btn}>Aguarde...</button>}
+        {loading && (
+          <button disabled className={style.btn}>
+            Aguarde...
+          </button>
+        )}
         {error && <p className={style.erro}>{error}</p>}
       </form>
     </div>

@@ -6,7 +6,6 @@ export default function login() {
     //redirecionar caso o usuario esteja logado
     const router = useRouter();
     const { user } = useAuthValue();
-  
     useEffect(() => {
       if (user) {
         router.push('/');

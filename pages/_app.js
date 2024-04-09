@@ -8,9 +8,9 @@ import { useState, useEffect } from "react";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { AuthProvider } from "@/context/AuthContext";
 export default function App({ Component, pageProps }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
   const { auth } = useAuthentication();
-  const loadingUser = user === null;
+  const loadingUser = user === undefined;
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

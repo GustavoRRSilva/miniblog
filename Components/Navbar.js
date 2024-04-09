@@ -4,7 +4,7 @@ import { useAuthValue } from "@/context/AuthContext";
 import { useAuthentication } from "@/hooks/useAuthentication";
 export default function Navbar() {
   const { user } = useAuthValue();
-  console.log(user);
+  const { logout } = useAuthentication();
   return (
     <nav className={style.navbar}>
       <Link href="/" className={style.brand} passHref>
@@ -19,8 +19,8 @@ export default function Navbar() {
         {!user && (
           <>
             <li>
-              <Link href={!user ? "/dashboard" : "/"} passHref>
-                <a>Register</a>
+              <Link href="/register" passHref>
+                Register
               </Link>
             </li>
             <li>
@@ -45,6 +45,15 @@ export default function Navbar() {
             Sobre
           </Link>
         </li>
+        {user && (
+          <>
+            <li>
+              <button className={style.logout} onClick={logout}>
+                Sair
+              </button>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
