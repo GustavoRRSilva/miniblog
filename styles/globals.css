@@ -28,6 +28,12 @@ textarea:focus {
   outline: none;
 }
 
+h1{
+  text-align: center;
+}
+div p{
+  text-align: center;
+}
 a,
 nav button {
   text-decoration: none;
